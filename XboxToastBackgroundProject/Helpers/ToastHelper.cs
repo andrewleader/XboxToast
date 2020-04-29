@@ -26,21 +26,45 @@ namespace XboxToastBackgroundProject.Helpers
             {
                 Launch = ProtocolUrl,
                 ActivationType = ToastActivationType.Protocol,
-                Scenario = ToastScenario.Reminder,
+                Scenario = ToastScenario.Reminder, // Reminder keeps the toast on screen until user dismisses it
                 Visual = new ToastVisual()
                 {
                     BindingGeneric = new ToastBindingGeneric()
                     {
+                        HeroImage = new ToastGenericHeroImage()
+                        {
+                            Source = "Assets/HeroImage.gif",
+                            AlternateText = "A GIF of games that can be streamed in the Xbox app"
+                        },
+
                         Children =
                         {
                             new AdaptiveText()
                             {
-                                Text = "Xbox Game Pass",
+                                Text = "Check out the Xbox app",
                                 HintMaxLines = 1
                             },
                             new AdaptiveText()
                             {
-                                Text = "Get the game pass!"
+                                Text = "Discover and download new games, see what your friends are playing and chat with them across PC, mobile, and console"
+                            },
+                            new AdaptiveGroup()
+                            {
+                                Children =
+                                {
+                                    new AdaptiveSubgroup()
+                                    {
+                                        Children =
+                                        {
+                                            new AdaptiveText()
+                                            {
+                                                Text = "Get unlimited access to over 100 high-quality PC games with Xbox Game Pass. Join the fun in new games or catch up on a recent hit. There’s always something new to play.",
+                                                HintWrap = true,
+                                                HintStyle = AdaptiveTextStyle.CaptionSubtle
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -49,7 +73,7 @@ namespace XboxToastBackgroundProject.Helpers
                 {
                     Buttons =
                     {
-                        new ToastButton("Try Game Pass", ProtocolUrl)
+                        new ToastButton("Launch the app", ProtocolUrl)
                         {
                             ActivationType = ToastActivationType.Protocol
                         },
